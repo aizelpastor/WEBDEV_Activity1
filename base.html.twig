@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+</head>
+<body>
+    {% block body %}{% endblock %}
+
+    {# Role-based messages #}
+    {% if is_granted('ROLE_ADMIN') %}
+        ✅ You are logged in as Admin. You have full access.
+    {% elseif is_granted('ROLE_USER') %}
+        ✅ You are logged in as Regular User. Limited access granted.
+    {% else %}
+        ⚠️ Access Denied. The user doesn't have ROLE_USER.
+    {% endif %}
+</body>
+</html>
